@@ -81,12 +81,12 @@ class LinkedList{
             console.log("Invalid Index")
             return
         }
-        if(index == 0){
+        if(index == 1){
             this.head = this.head.next
             return
         }
         let current = this.head 
-        for(let i=0;i<index-1;i++){
+        for(let i=1;i<index-1;i++){
             current = current.next
         }
         if(current.next){
@@ -140,7 +140,9 @@ linkedList.addFirst(1)
 linkedList.addFirst(2)
 linkedList.addFirst(3)
 linkedList.addFirst(4)
-linkedList.addAt(3,5)
+linkedList.addFirst(5)
+// linkedList.addAt(3,5)
 // linkedList.removeMiddle()
-linkedList.removeElement(5)
+// linkedList.removeElement(5)
+linkedList.removeAt(1)
 linkedList.print() 
