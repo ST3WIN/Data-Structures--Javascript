@@ -53,24 +53,85 @@ class LinkedList{
         newNode.next = current.next
         current.next = newNode
     }
-    middle(){
-        if(!this.head){
-            return
-        }
-        let fast = this.head
-        let slow = this.head
-        while(fast !== null && fast.next!==null){
-            slow = slow.next
-            fast = fast.next.next
-        }
-        return console.log("Data =",slow.data)
-    }
     print(){
         let current = this.head
         while(current){
             console.log(current.data)
             current = current.next
         }
+    }
+    removeFirst(){
+        if(!this.head){
+            return
+        }
+        this.head = this.head.next
+    }
+    removeLast(){
+        if(!this.head){
+            return
+        }
+        let current = this.head
+        while(current.next.next){
+            current= current.next
+        }
+        current.next = null
+    }
+    removeAt(index){
+        if(index<0 || index>this.size()){
+            console.log("Invalid Index")
+            return
+        }
+        if(index == 0){
+            this.head = this.head.next
+            return
+        }
+        let current = this.head 
+        for(let i=0;i<index-1;i++){
+            current = current.next
+        }
+        if(current.next){
+            current.next = current.next.next
+        }
+        
+    }
+    removeMiddle(){
+        if(!this.head){
+            return console("The list is empty")
+        }
+        if(!this.head.next){
+            this.head = null
+            return
+        }
+        let fast = this.head
+        let slow = this.head
+        let prev = null
+        while(fast!==null && fast.next!==null){
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        }
+        prev.next = prev.next.next
+        return
+    }
+    removeElement(element){
+        if(!this.head){
+            return console.log("List is empty")
+        }
+        if(this.head.data == element){
+            this.head = this.head.next
+            return
+        }
+        let current = this.head
+        let prev = null
+        while(current){
+            if(current.data == element){
+                prev.next = current.next
+                return
+            }
+            prev = current
+            current = current.next
+        }
+        return console.log("Elemnt not found")
     }
 }
 
@@ -80,5 +141,6 @@ linkedList.addFirst(2)
 linkedList.addFirst(3)
 linkedList.addFirst(4)
 linkedList.addAt(3,5)
-linkedList.print()
-linkedList.middle() 
+// linkedList.removeMiddle()
+linkedList.removeElement(5)
+linkedList.print() 
