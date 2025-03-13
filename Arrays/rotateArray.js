@@ -18,4 +18,4 @@ function reverseArray(nums,start,end){
         nums[end--] = temp
     }
 }
-console.log(rotateArray(nums,3))
+console.log(rotateArray(nums,5))
