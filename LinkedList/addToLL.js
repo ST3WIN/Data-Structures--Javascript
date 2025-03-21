@@ -65,6 +65,20 @@ class LinkedList{
         }
         return console.log("Data =",slow.data)
     }
+    reverse(){
+        if(!this.head){
+            return
+        }
+        let prev = null
+        let current = this.head
+        while(current){
+            const next = current.next
+            current.next = prev
+            prev = current
+            current=next
+        }
+        this.head = prev
+    }
     print(){
         let current = this.head
         while(current){
@@ -80,5 +94,6 @@ linkedList.addFirst(2)
 linkedList.addFirst(3)
 linkedList.addFirst(4)
 linkedList.addAt(3,5)
+linkedList.reverse()
 linkedList.print()
 linkedList.middle() 
