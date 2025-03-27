@@ -4,7 +4,7 @@
 let nums = [2,3,4,7,11]
 function missing(nums,k){
     let count = 0
-    for(let i=0;i<nums.length;i++){
+    for(let i = 0; i < nums.length; i++){
         if(nums[i] <= k+count) count++
     }
     return k+count
