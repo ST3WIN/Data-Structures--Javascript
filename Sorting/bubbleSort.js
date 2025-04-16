@@ -6,5 +6,5 @@ function bubbleSort(nums){
     }
     return nums
 }
-let nums = [21,3,3,123,4,12,4,2,11]
+let nums = [444,123,99,18,1234,9]
 console.log(bubbleSort(nums))
