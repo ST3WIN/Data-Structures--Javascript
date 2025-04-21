@@ -48,6 +48,15 @@ class BinarySearchTree{
             }
         }
     }
+    inOrder(root){
+        //Visit the left subtre until end and read value,
+        //go the parent and read node , and move to right subtree
+        if(root){
+            this.inOrder(root.left)
+            console.log(root.value)
+            this.inOrder(root.right)
+        }
+    }
 }
 let bst = new BinarySearchTree()
 bst.insert(10)
@@ -58,3 +67,4 @@ bst.insert(7)
 console.log(bst.search(bst.root , 10))
 console.log(bst.search(bst.root , 5))
 console.log(bst.search(bst.root , 15))
+bst.inOrder(bst.root)
