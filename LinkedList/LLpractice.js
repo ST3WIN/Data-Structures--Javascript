@@ -7,6 +7,7 @@ class Node{
 class LinkedList{
     constructor(){
         this.head = null
+        this.tail = null
         this.size = 0
     }
     isEmpty(){
@@ -19,6 +20,7 @@ class LinkedList{
         const newNode = new Node(value)
         if(this.isEmpty()){
             this.head = newNode
+            this.tail = newNode
         }else{
             newNode.next = this.head
             this.head = newNode
@@ -58,6 +60,7 @@ class LinkedList{
         const newNode = new Node(value)
         if(this.isEmpty()){
             this.head = newNode
+            this.tail = newNode
             this.size++
             return
         }
@@ -66,6 +69,7 @@ class LinkedList{
             current = current.next
         }
         current.next = newNode
+        this.tail = newNode
         this.size++
     }
     addAt(index , value){
@@ -157,6 +161,19 @@ class LinkedList{
         }
         this.head = prev
     }
+    circular(){
+        if(this.isEmpty()){
+            return console.log("This list is empty")
+        }
+        let slow = this.head
+        let fast = this.head.next
+        while(fast!== null && fast.next!== null){
+            if(fast === slow) return true
+            slow = slow.next
+            fast = fast.next.next
+        }
+        return false
+    }
     print(){
         if(this.isEmpty()){
             return console.log("The List is empty")
@@ -179,7 +196,7 @@ function arrayToLinkedList(arr) {
 }
 let arr = [10, 20, 30, 40, 50];
 let arrarlinkedList = arrayToLinkedList(arr);
-arrarlinkedList.print();
+// arrarlinkedList.print();
 let linkedList = new LinkedList()
 linkedList.addFirst(10)
 linkedList.addFirst(20)
@@ -192,8 +209,10 @@ linkedList.middle()
 linkedList.addAt(0,60)
 linkedList.removeFirst()
 linkedList.removeLast()
-// linkedList.removeElement(10)
+linkedList.removeElement(10)
 linkedList.removeAt(1)
 linkedList.reverse()
 linkedList.print()
 linkedList.getSize()
+// linkedList.tail.next = linkedList.head
+console.log(linkedList.circular())
